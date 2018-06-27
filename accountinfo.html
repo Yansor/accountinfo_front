@@ -23,7 +23,7 @@
 
      pageIndexField="page" pageSizeField="size"
 
-     url="http://localhost:9000/digitalAccount" idField="id"
+     url="http://acc-my-project2.193b.starter-ca-central-1.openshiftapps.com/digitalAccount" idField="id"
      allowResize="true"
      allowCellEdit="true" allowCellSelect="true" multiSelect="true" ajaxOptions="{type:'get',contentType:'application/json'}"
 >
@@ -55,11 +55,11 @@
     //
     // var editWindow = mini.Panel();
     // editWindow.show();
+    var serverUrl = "http://acc-my-project2.193b.starter-ca-central-1.openshiftapps.com/";
     mini.parse();
 
     var grid = mini.get("datagrid1");
 
-    var getUrl = "http://localhost:9000/digitalAccount/";
     grid.load();
 
     function search() {
@@ -91,7 +91,7 @@
             //删除请求
             $.ajax({
                 contentType: 'application/json',
-                url: "http://localhost:9000/digitalAccount/batchDelete",
+                url: serverUrl + "/digitalAccount/batchDelete",
                 data:
                     JSON.stringify(idArrs)
                 ,
@@ -113,7 +113,7 @@
         grid.loading("保存中，请稍后......");
         $.ajax({
             contentType: 'application/json',
-            url: "http://localhost:9000/digitalAccount/batchInsertOrUpdate",
+            url: serverUrl +"digitalAccount/batchInsertOrUpdate",
             data: json,
             type: "post",
             success: function (text) {
